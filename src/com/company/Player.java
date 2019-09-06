@@ -1,51 +1,59 @@
 package com.company;
-import org.w3c.dom.ls.LSOutput;
-
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Player
 {
     // a total
     int handTotal=0;
-    Random rand = new Random();
-
-    int [] hand=new int [2];
-
-
+    //ublic Random rand = new Random();
+    int sumP=0;
+    int sumD=0;
+    ArrayList<Integer> handP = new ArrayList<Integer>(2);
+    ArrayList<Integer> handD = new ArrayList<Integer>(2);
     //composed of minimum 2 cards
     //a card is a random
-    public static int genRandom(){
-        return new Random().nextInt(13);// or may be cache random instance
+    public static int genRandom()
+    {
+        int card = (int)(Math.random() * 13 + 1);
+        return card;
     }
 
-    public  int defaultHandPlayer()
-    {
-        int sumP=0;
+    public  void defaultHandPlayerwithsum() {
 
-        for (int i = 0; i < hand.length; i++)
+        handP.add(genRandom());
+        handP.add(genRandom());
+        for (int i=0;i<handP.size();i++)
         {
-            hand[i]=genRandom();
+            sumP+=handP.get(i);
         }
-        sumP=hand[0]+hand[1];
-        System.out.println("your hand is "+ Arrays.toString(hand));
-        return sumP;
+        System.out.println("Your hand is "+handP);
+        System.out.println("Your total is "+sumP);
+
+
     }
-    public  int defaultHandDealer()
-    {
-        int sumD=0;
-        for (int i = 0; i < hand.length; i++)
-        {
-            hand[0]=genRandom();
-        }
-        sumD=hand[0];
-        System.out.println("The dealer shows "+ Arrays.toString(hand));
-        return sumD;
-    }
-    public  int hit()
+
+    public  void defaultHandDealerwithsum()
     {
 
-        return 0;
+
+        handD.add(genRandom());
+        for (int i=0;i<handD.size();i++)
+        {
+            sumD+=handD.get(i);
+        }
+        System.out.println("The dealer is showing"+handD);
+        System.out.println("Your total is "+sumD);
+
+    }
+    public  void  hit()
+    {
+        handP.add(genRandom());
+        sumP+=handP.get(handP.size()-1);
+        System.out.println("your new hand is "+handP);
+        System.out.println("your new sum is"+sumP);
     }
     public  int stand()
     {

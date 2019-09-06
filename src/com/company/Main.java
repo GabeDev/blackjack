@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main
 {
@@ -9,12 +10,17 @@ public class Main
     {
         Player user = new Player();
         Player dealer = new Player();
+        Scanner sc = new Scanner(System.in);
 
-
-
-        System.out.println("Your total is "+user.defaultHandPlayer());
-        System.out.println("The dealers total is "+dealer.defaultHandDealer());
+        user.defaultHandPlayerwithsum();
+        dealer.defaultHandDealerwithsum();
         System.out.println("What would you like to do hit or stand ? ");
+        String userInput= sc.nextLine();
+
+
+            user.hit();
+
+
 
 
     }
