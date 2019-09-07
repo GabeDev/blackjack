@@ -53,11 +53,23 @@ public class Player
         handP.add(genRandom());
         sumP+=handP.get(handP.size()-1);
         System.out.println("your new hand is "+handP);
-        System.out.println("your new sum is"+sumP);
+
+
     }
-    public  int stand()
+    public void stand()
     {
-        return 0;
+        System.out.println("Your sum is"+sumP);
+        System.out.println("Dealers sum is"+sumD);
+
+        if(sumP>sumD&&sumP<21)
+        {
+            System.out.println("You win");
+        }
+        else
+        {
+            System.out.println("you lose");
+        }
+
     }
 
 }
